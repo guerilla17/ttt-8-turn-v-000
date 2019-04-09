@@ -19,6 +19,7 @@ def position_taken?(board, index)
   elsif board[index] == nil
     return false
   elsif board[index] == "X" || "O"
+  else board[index] == "X" || "O"
     return true
   end
 end
@@ -42,5 +43,15 @@ def turn(board)
   else 
     move(board, index, value = 'X')
     display_board(board)
+  input_to_index(input)
+  index = input_to_index(input)
+  valid_move?(board, index)
+  if valid_move?(board, index) == false
+      loop.do
+        turn(board)
+        until valid_move(board, index) == true
+      end
+  move(board, index, value = 'X')
+  display_board(board)
  end
 end
